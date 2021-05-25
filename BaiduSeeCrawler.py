@@ -17,7 +17,7 @@ r = requests.post(
     'https://graph.baidu.com/upload?tn=pc&from=pc&image_source=PC_UPLOAD_IMAGE_MOVE&range={%22page_from%22:%20%22shituIndex%22}&extUiData%5bisLogoShow%5d=1',
     files=data, headers=headers).text
 resp_json = json.loads(r)
-# 目前标识在data中直接返回，如果未来被改掉，也可在data的url中找到
+# 标识在data中直接返回
 sign = resp_json["data"]["sign"]
 resp = requests.get("https://graph.baidu.com/ajax/pcsimi?sign={}".format(sign)).text
 resp_data_list = json.loads(resp)["data"]["list"]
